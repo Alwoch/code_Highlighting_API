@@ -5,6 +5,8 @@ from . import views
 urlpatterns = [
     path('snippets/', views.SnippetList.as_view()),
     path('snippets/<int:pk>/', views.SnippetDetail.as_view()),
+    path('users/', views.UserList.as_view()),
+    path('users/<int:pk>/', views.UserDetail.as_view()),
 ]
 
 #format_suffix_patterns provide a clean way of referring to a specific format eg the API willnow be able to handleAPI URLs such as http://example.com/api/items/4.json

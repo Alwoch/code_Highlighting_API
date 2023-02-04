@@ -4,12 +4,14 @@ from rest_framework.response import Response
 from django.http import Http404
 from .models import Snippet
 from .serializers import SnippetSerializer
+from django.contrib.auth.models import User
+from .serializers import UserSerializer
 
 #using mixins
 # from snippets.models import Snippet
 # from snippets.serializers import SnippetSerializer
 # from rest_framework import mixins
-# from rest_framework import generics
+from rest_framework import generics
 
 class SnippetList(APIView):
     """
@@ -84,3 +86,12 @@ class SnippetDetail(APIView):
 
 #     def delete(self, request, *args, **kwargs):
 #         return self.destroy(request, *args, **kwargs)
+
+class UserList(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class UserDetail(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
