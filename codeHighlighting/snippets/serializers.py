@@ -2,8 +2,6 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from snippets.models import Snippet, LANGUAGE_CHOICES, STYLE_CHOICES
 
-
-
 # class SnippetSerializer(serializers.Serializer):
 #     id = serializers.IntegerField(read_only=True)
 #     title = serializers.CharField(required=False, allow_blank=True, max_length=100)
@@ -32,9 +30,11 @@ from snippets.models import Snippet, LANGUAGE_CHOICES, STYLE_CHOICES
 
 #Refactor the above serializer
 class SnippetSerializer(serializers.ModelSerializer):
+    # The source argument is used o control which attribute is used to populate a field and can point towards any attribute on the serialised instance. 
+    owner = serializers.ReadOnlyField(source='owner.username')
     class Meta:
         model = Snippet
-        fields = ['id', 'title', 'code', 'linenos', 'language', 'style']
+        fields = ['id', 'title', 'code', 'linenos', 'language', 'style','owner']
 
 
 #user serializer
