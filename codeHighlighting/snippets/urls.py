@@ -9,5 +9,5 @@ urlpatterns = [
     path('users/<int:pk>/', views.UserDetail.as_view()),
 ]
 
-#format_suffix_patterns provide a clean way of referring to a specific format eg the API willnow be able to handleAPI URLs such as http://example.com/api/items/4.json
+#format_suffix_patterns provide a clean way of referring to a specific format eg the API will now be able to handleAPI URLs such as http://example.com/api/items/4.json
 urlpatterns = format_suffix_patterns(urlpatterns)
